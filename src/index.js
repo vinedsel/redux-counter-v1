@@ -4,7 +4,6 @@ import Counter from './Counter';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-const store = createStore();
 
 const initialState = {
   count: 0
@@ -16,14 +15,28 @@ function reducer(state = initialState, action) {
       return {
         count: state.count + 1
       };
+    case 'Increment5':
+      return {
+        count: state.count + 5
+      };
     case 'Decrement':
       return {
         count: state.count - 1
+      };
+    case 'Decrement10':
+      return {
+        count: state.count - 10
+      };
+    case 'Reset':
+      return {
+        count: 0
       };
     default:
       return state;
   }
 }
+
+const store = createStore(reducer);
 
 const App = () => (
   <Provider store={store}>
